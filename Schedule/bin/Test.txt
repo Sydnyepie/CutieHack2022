@@ -1,0 +1,25 @@
+1000
+100
+30
+50
+05/18/2022
+Math
+Homework
+06/19/2022
+English
+Test/Project
+10/22/2022
+Geography
+Chore
+10/30/2022
+Psychology
+Homework
+12/30/2022
+Computer Science
+Homework
+12/13/2022
+Political Science
+Homework
+11/5/2022
+Oceanography
+Test/Project
