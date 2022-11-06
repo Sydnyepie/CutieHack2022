@@ -1,36 +1,131 @@
 #include <iostream>
 #include <list>
+#include <cmath>
 using namespace std;
 
 void numberCode(){
   cout << "1 Add task" << endl;
   cout << "2 View tasks" << endl;
   cout << "3 Submit completed task" << endl;
-  cout << "4 Use earned points" << endl;
+  cout << "4 Make Rewards" << endl;
   cout << "5 Exit" << endl;
 }
 
 void mainSetup(string name, int homework, int tests_projects, int chores, list<string>hw, list<string>test_proj, list<string>chore){
   int next = 0;
+  string input;
   int blah;
+  string category;
+  int itemNum;
+  int points = 0;
+  list<string>reward;
+  list<int>pointNum;
+  int numInput;
+  string rewardName;
+  
+  cout << endl;
   cout << "Congrats! You have now set up " << name << "'s schedule. From this point on, everything is up to you." << endl;
   cout << "After everything you input, you have an option to enter a number to decide what happens next. Below are the numbers and what they do. Now, go out there and start scheduling!" << endl;
   while(true){
     numberCode();
     cout << "What now?(Enter a number): ";
     cin >> next;
+    cout << endl;
     
     if (next == 1) {
-      
+      cout << "Enter the task as a single word: ";
+      input = "";
+      cin >> input;
+      cout << "Enter the Category: ";
+      while((tolower(category.at(0)) != 'c') || (tolower(category.at(0)) == 't')||(tolower(category.at(0)) == 'p') || (tolower(category.at(0)) == 'h')){
+      cout << "Sorry, that category is unavailable. Please reenter the category (your task is saved though): ";
+      cin >> category;
+    }
+  
+      if(tolower(category.at(0)) == 'c'){
+        chore.push_back(input);
+        cout << "You have successfully added the task to the Chore category.";
+      }
+      else if((tolower(category.at(0)) == 't')||(tolower(category.at(0)) == 'p')){
+        test_proj.push_back(input);
+        cout << "You have successfully added the task to the Tests/Projects category.";
+      }
+      else if(tolower(category.at(0)) == 'h'){
+        hw.push_back(input);
+        cout << "You have successfully added the task to the Homework category.";
+      }
     }
     else if(next == 2) {
-      
+      cout << "Homework: ";
+      for (auto v : hw) {
+        cout << v;
+      }
+      cout << endl;
+      cout << "Tests/Projects: ";
+      for (auto v : test_proj) {
+        cout << v;
+        }
+      cout << endl;
+      cout << "Chores: ";
+      for (auto v : chore) {
+        cout << v;
+        }
+      cout << endl;
     }
     else if(next == 3) {
-      
+      cout << "Homework: ";
+      for (auto v : hw) {
+        cout << v << endl;
+      }
+      cout << endl;
+      cout << "Tests/Projects: ";
+      for (auto v : test_proj) {
+        cout << v << endl;
+        }
+      cout << endl;
+      cout << "Chores: ";
+      for (auto v : chore) {
+        cout << v << endl;
+        }
+
+      cout << "Enter the category of the item: ";
+      cin >> category;
+      cout << endl;
+      while((tolower(category.at(0)) != 'c') && (tolower(category.at(0)) != 't') &&(tolower(category.at(0)) != 'p') && (tolower(category.at(0)) != 'h')){
+      cout << "Sorry, that category is unavailable. Please reenter the category: ";
+      cin >> category;
+    }
+      cout << "Enter the item number from that category: ";
+      cin >> itemNum;
+      if(tolower(category.at(0)) == 'c'){
+        cout << "You have successfully deleted the task to the Chore category.";
+        cout << "You earned " << chores << " points.";
+        points += chores;
+      }
+      else if((tolower(category.at(0)) == 't')||(tolower(category.at(0)) == 'p')){
+        cout << "You have successfully deleted the task to the Tests/Projects category.";
+        cout << "You earned " << tests_projects << " points.";
+        points += tests_projects;
+      }
+      else if(tolower(category.at(0)) == 'h'){
+        cout << "You have successfully deleted the task to the Homework category.";
+        cout << "You earned " << homework << " points.";
+        points += homework;
+      }
     }
     else if(next == 4) {
+      cout << "What type of reward would you like to offer?(Enter a single Word): ";
+      cin >> rewardName;
+      reward.push_back(rewardName);
+      cout << endl;
       
+      cout << "How many points is it worth?: ";
+      cin >> numInput;
+      pointNum.push_back(numInput);
+      cout << endl;
+
+      cout << "Successfully added reward to schedule.";
+      cout << endl;
     }
     else if(next == 5) {
       cout << "Alrighty, thank you for using the Virtual Schedule Maker(tm), have a good day!";
@@ -57,7 +152,7 @@ void scheduleSetup(string name, int homework, int tests_projects, int chores) {
   cout << "Now, what is the category: ";
   cin >> category;
 
-  while((tolower(category.at(0)) != 'c') || (tolower(category.at(0)) == 't')||(tolower(category.at(0)) == 'p') || (tolower(category.at(0)) == 'h')){
+  while((tolower(category.at(0)) != 'c') && (tolower(category.at(0)) != 't') &&(tolower(category.at(0)) != 'p') && (tolower(category.at(0)) != 'h')){
     cout << "Sorry, that category is unavailable. Please reenter the category (your task is saved though): ";
     cin >> category;
   }
