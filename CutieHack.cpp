@@ -37,7 +37,7 @@ void mainSetup(string name, int homework, int tests_projects, int chores, list<s
       input = "";
       cin >> input;
       cout << "Enter the Category: ";
-      while((tolower(category.at(0)) != 'c') || (tolower(category.at(0)) == 't')||(tolower(category.at(0)) == 'p') || (tolower(category.at(0)) == 'h')){
+      while((tolower(category.at(0)) != 'c') && (tolower(category.at(0)) != 't') &&(tolower(category.at(0)) != 'p') && (tolower(category.at(0)) != 'h')){
       cout << "Sorry, that category is unavailable. Please reenter the category (your task is saved though): ";
       cin >> category;
     }
